@@ -31,6 +31,6 @@ $(function() {
     $('#add').on('click',function(evt) {
         $.post('/postInfo',{name:$('#addName').prop('value')},function() {});
         getInfo();
-        $('#addName').prop('value','');
+
     });
 });

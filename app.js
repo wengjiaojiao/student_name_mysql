@@ -41,7 +41,7 @@ app.delete('/deleteInfo', function(req, res) {
 
     conn.connect();
     conn.query('delete from student_name where id =' + id, function(err, result) {
-        res.send(result);
+        //res.send(result);
     });
     conn.end();
 });
@@ -52,7 +52,7 @@ app.post('/postInfo', function(req, res) {
 
     conn.connect();
     conn.query('insert into student_name(name) values ("' + name + '")' , function(err, result) {
-        res.send(result);
+        //res.send(result);
     });
     conn.end();
 });
