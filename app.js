@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.static('public'));
-app.engine(".html",ejs.__express);
+app.engine('.html',ejs.__express);
 app.set("view engine",'html');
 
 app.get('/', function (req, res) {
