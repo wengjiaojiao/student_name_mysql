@@ -36,7 +36,7 @@ app.get('/student_names', function(req, res) {
 });
 
 app.delete('/student_name/:id', function(req, res) {
-    var id = req.body.id;
+    var id = req.params.id;
     var conn = connetMysql();
 
     conn.connect();
