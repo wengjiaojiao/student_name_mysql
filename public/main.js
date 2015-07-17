@@ -20,14 +20,18 @@ $(function() {
         if (id === '') {
             return;
         }
-        $.ajax({
-            url: '/student_name/:id',
-            type: 'delete',
-            data: {
-                id: id
-            }
-        });
-        getInfo();
+        if (confirm('Do you want to delete this data?')) {
+            $.ajax({
+                url: '/student_name/:id',
+                type: 'delete',
+                data: {
+                    id: id
+                },
+                success: function() {
+                    getInfo();
+                }
+            });
+        }
     });
 
     $('#add').on('click', function(evt) {
