@@ -13,7 +13,7 @@ app.engine('.html',ejs.__express);
 app.set("view engine",'html');
 
 app.get('/', function (req, res) {
-  res.render("print-infor",{});
+  res.render("print-infor");
 })
 
 function connetMysql() {
@@ -26,7 +26,7 @@ function connetMysql() {
     });
 }
 
-app.get('/getInfo', function(req, res) {
+app.get('/student_names', function(req, res) {
     var conn = connetMysql();
     conn.connect();
     conn.query('SELECT * from student_name', function(err, result) {
@@ -35,24 +35,27 @@ app.get('/getInfo', function(req, res) {
     conn.end();
 });
 
-app.delete('/deleteInfo', function(req, res) {
+app.delete('/student_name/:id', function(req, res) {
     var id = req.body.id;
     var conn = connetMysql();
 
     conn.connect();
     conn.query('delete from student_name where id =' + id, function(err, result) {
         //res.send(result);
+        console.log(result);
+        res.end();
     });
     conn.end();
 });
 
-app.post('/postInfo', function(req, res) {
+app.post('/student_name', function(req, res) {
     var name = req.body.name;
     var conn = connetMysql();
 
     conn.connect();
     conn.query('insert into student_name(name) values ("' + name + '")' , function(err, result) {
         //res.send(result);
+        res.end();
     });
     conn.end();
 });
